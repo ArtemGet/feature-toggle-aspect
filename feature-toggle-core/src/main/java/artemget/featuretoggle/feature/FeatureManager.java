@@ -11,7 +11,9 @@ import java.util.stream.Collectors;
 /**
  * feature toggle management
  */
+//TODO: singleton
 public class FeatureManager implements FeatureReindex, FeatureContainer {
+    //TODO: concurrentMap
     private Map<String, Feature> featureMap;
 
     public FeatureManager(Set<Feature> features) {
@@ -23,7 +25,7 @@ public class FeatureManager implements FeatureReindex, FeatureContainer {
     }
 
     @Override
-    public Feature getFeature(String featureName) {
+    synchronized public Feature getFeature(String featureName) {
         Objects.requireNonNull(featureName);
         return featureMap.get(featureName);
     }
