@@ -16,4 +16,11 @@
         <maven.compiler.target>11</maven.compiler.target>
     </properties>
 
+    <dependencies>
+        <dependency>
+            <artifactId>feature-toggle-core</artifactId>
+            <groupId>artemget.feature-toggle</groupId>
+        </dependency>
+    </dependencies>
+
 </project>

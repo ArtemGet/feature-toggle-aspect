@@ -1,35 +1,16 @@
 package artemget.featuretoggle.aspect;
 
-
-import artemget.featuretoggle.feature.FeatureContainer;
-import artemget.featuretoggle.feature.FeatureManager;
+import artemget.featuretoggle.aspect.command.AbstractToggleCommand;
 
 /**
  * Abstract feature toggle processor
  *
  * @param <J> - joinPoint, rely on realization
  */
-public abstract class AbstractToggleAspect<J> {
-    private final FeatureContainer featureManager;
+public abstract class AbstractToggleAspect<J> implements ToggleProcessor<J> {
+    protected final AbstractToggleCommand<J, ?> toggleCommand;
 
-    protected AbstractToggleAspect(FeatureManager featureManager) {
-        this.featureManager = featureManager;
+    protected AbstractToggleAspect(AbstractToggleCommand<J, ?> toggleCommand) {
+        this.toggleCommand = toggleCommand;
     }
-
-    /**
-     * Points where aspect should process on Class layer
-     */
-    public abstract void classLayerPointcut();
-
-    /**
-     * Points where aspect should process on method layer
-     */
-    public abstract void methodLayerPointcut();
-
-    /**
-     * Annotation processing
-     *
-     * @param joinPoint - join point
-     */
-    public abstract void processFeatureToggle(J joinPoint);
 }
