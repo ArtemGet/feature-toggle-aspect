@@ -1,6 +1,8 @@
-package artemget.featuretoggle.aspect.command;
+package artemget.featuretoggle.aspect;
 
-public class TrailingToggleCommand<J,A> extends AbstractToggleCommand<J,A> {
+import java.lang.annotation.Annotation;
+
+public class TrailingToggleCommand<J,A extends Annotation> extends AbstractToggleCommand<J,A> {
     public TrailingToggleCommand() {
         super(null, null, null);
     }

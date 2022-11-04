@@ -1,15 +1,16 @@
 package artemget.featuretoggle.aspect;
 
-import artemget.featuretoggle.aspect.command.AbstractToggleCommand;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
 
+import java.lang.annotation.Annotation;
+
 @Aspect
 public class SpringFeatureToggleAspect extends AbstractToggleAspect<JoinPoint> implements TogglePoint {
 
-    protected SpringFeatureToggleAspect(AbstractToggleCommand<JoinPoint, ?> toggleCommand) {
+    protected SpringFeatureToggleAspect(SpringToggleCommand<JoinPoint, ? extends Annotation> toggleCommand) {
         super(toggleCommand);
     }
 

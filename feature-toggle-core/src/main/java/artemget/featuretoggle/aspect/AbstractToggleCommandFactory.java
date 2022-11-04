@@ -1,4 +1,4 @@
-package artemget.featuretoggle.aspect.command;
+package artemget.featuretoggle.aspect;
 
 import artemget.featuretoggle.feature.FeatureContainer;
 

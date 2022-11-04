@@ -1,4 +1,4 @@
-package artemget.featuretoggle.aspect.command;
+package artemget.featuretoggle.aspect;
 
 import artemget.featuretoggle.annotation.ToggleFeature;
 import artemget.featuretoggle.annotation.ToggleFeatures;
@@ -9,12 +9,12 @@ public class DefaultSpringToggleCommandFactory extends AbstractToggleCommandFact
 
     @Override
     public AbstractToggleCommand<JoinPoint, ToggleFeatures> create(FeatureContainer featureContainer) {
-        SingleFeatureCommand singleFeatureProcessorStrategy =
-                new SingleFeatureCommand(ToggleFeature.class,
+        SingleToggleCommand singleFeatureProcessorStrategy =
+                new SingleToggleCommand(ToggleFeature.class,
                         new TrailingToggleCommand<>(),
                         featureContainer);
 
-        return new MultipleFeatureCommand(ToggleFeatures.class,
+        return new MultipleToggleCommand(ToggleFeatures.class,
                 singleFeatureProcessorStrategy,
                 featureContainer);
     }
