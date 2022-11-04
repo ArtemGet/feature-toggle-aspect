@@ -9,7 +9,7 @@ public class Feature {
     private final String featureName;
     private boolean disabled;
 
-    public Feature(String featureName, boolean disabled) {
+    public Feature(String featureName, boolean disabled) throws NullPointerException {
         Objects.requireNonNull(featureName);
         this.featureName = featureName;
         this.disabled = disabled;
