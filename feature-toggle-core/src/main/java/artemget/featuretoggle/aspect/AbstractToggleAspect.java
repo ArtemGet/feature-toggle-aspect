@@ -8,9 +8,9 @@ import java.lang.annotation.Annotation;
  * @param <J> - joinPoint, rely on realization
  */
 abstract class AbstractToggleAspect<J> implements ToggleProcessor<J> {
-    protected final AbstractToggleCommand<J, ? extends Annotation> toggleCommand;
+    protected final AbstractToggleChain<J, ? extends Annotation> toggleCommand;
 
-    protected <A extends Annotation> AbstractToggleAspect(AbstractToggleCommand<J, A> toggleCommand) {
+    protected <A extends Annotation> AbstractToggleAspect(AbstractToggleChain<J, A> toggleCommand) {
         this.toggleCommand = toggleCommand;
     }
 }

@@ -1,10 +1,12 @@
 package artemget.featuretoggle.aspect;
 
+import artemget.featuretoggle.exception.FeatureDisabledException;
+
 public interface ToggleProcessor<J> {
     /**
      * Annotation processing
      *
      * @param joinPoint - join point
      */
-    public abstract void processFeatureToggle(J joinPoint);
+    void processFeatureToggle(J joinPoint) throws FeatureDisabledException;
 }

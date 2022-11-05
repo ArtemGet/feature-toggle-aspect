@@ -1,5 +1,6 @@
 package artemget.featuretoggle.aspect;
 
+import artemget.featuretoggle.exception.FeatureDisabledException;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
@@ -10,7 +11,7 @@ import java.lang.annotation.Annotation;
 @Aspect
 public class SpringFeatureToggleAspect extends AbstractToggleAspect<JoinPoint> implements TogglePoint {
 
-    protected SpringFeatureToggleAspect(SpringToggleCommand<JoinPoint, ? extends Annotation> toggleCommand) {
+    public SpringFeatureToggleAspect(SpringToggleChain<JoinPoint, ? extends Annotation> toggleCommand) {
         super(toggleCommand);
     }
 
@@ -28,7 +29,7 @@ public class SpringFeatureToggleAspect extends AbstractToggleAspect<JoinPoint> i
 
     @Override
     @Before("classLayerPointcut() || methodLayerPointcut()")
-    public void processFeatureToggle(JoinPoint joinPoint) {
+    public void processFeatureToggle(JoinPoint joinPoint)  throws FeatureDisabledException {
         toggleCommand.processFeatureToggle(joinPoint);
     }
 }

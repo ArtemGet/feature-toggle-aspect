@@ -27,7 +27,12 @@ public class FeatureManager implements FeatureReindex, FeatureContainer {
     @Override
     synchronized public Feature getFeature(String featureName) {
         Objects.requireNonNull(featureName);
-        return featureMap.get(featureName);
+        Feature feature = featureMap.get(featureName);
+        if (feature == null) {
+            String errorMessage = String.format(ErrorCodeTemplate.FEATURE_NOT_FOUND, featureName);
+            throw new FeatureNotFoundEx(errorMessage);
+        }
+        return feature;
     }
 
     @Override

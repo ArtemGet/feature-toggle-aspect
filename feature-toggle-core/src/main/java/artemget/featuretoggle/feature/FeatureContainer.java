@@ -1,5 +1,7 @@
 package artemget.featuretoggle.feature;
 
+import artemget.featuretoggle.exception.FeatureNotFoundEx;
+
 public interface FeatureContainer {
 
     /**
@@ -8,5 +10,5 @@ public interface FeatureContainer {
      * @param featureName - feature name
      * @return feature
      */
-    Feature getFeature(String featureName) throws NullPointerException;
+    Feature getFeature(String featureName) throws NullPointerException, FeatureNotFoundEx;
 }
