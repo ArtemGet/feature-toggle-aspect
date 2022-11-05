@@ -10,6 +10,9 @@ import org.aspectj.lang.JoinPoint;
 
 import java.lang.annotation.Annotation;
 
+/**
+ * Feature toggle chain, process ToggleFeatures annotation
+ */
 public class MultipleToggleChain extends SpringToggleChain<JoinPoint, ToggleFeatures> {
 
     public MultipleToggleChain(Class<ToggleFeatures> targetAnnotation,
@@ -18,6 +21,13 @@ public class MultipleToggleChain extends SpringToggleChain<JoinPoint, ToggleFeat
         super(nextProcessor, targetAnnotation, featureContainer);
     }
 
+    /**
+     * Should process target annotation if exists in join point.
+     * FeatureContainer provides feature for name if exists.
+     * In case of nothing found should pass processing to nextProcessor
+     *
+     * @param joinPoint - join point
+     */
     @Override
     public void processFeatureToggle(JoinPoint joinPoint) throws FeatureDisabledException {
         ToggleFeatures annotation = ejectAnnotation(joinPoint);

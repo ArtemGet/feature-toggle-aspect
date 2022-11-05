@@ -24,9 +24,7 @@ abstract class AbstractToggleChain<J, A extends Annotation> implements TogglePro
     }
 
     /**
-     * Should process target annotation if exists in join point.
-     * FeatureContainer provides feature for name if exists.
-     * In case of nothing found should pass processing to nextProcessor
+     * Target annotation ejection
      *
      * @param joinPoint - generic join point
      * @return target annotation
