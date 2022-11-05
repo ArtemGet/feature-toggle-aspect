@@ -1,5 +1,8 @@
 package artemget.featuretoggle.exception.errorCode;
 
+/**
+ * Error code pattern
+ */
 public class ErrorCodeTemplate {
     private ErrorCodeTemplate() {
 

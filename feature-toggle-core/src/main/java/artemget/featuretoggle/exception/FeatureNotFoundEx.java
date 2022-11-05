@@ -1,5 +1,8 @@
 package artemget.featuretoggle.exception;
 
+/**
+ * Should be thrown in case of feature not found
+ */
 public class FeatureNotFoundEx extends RuntimeException {
     public FeatureNotFoundEx() {
     }

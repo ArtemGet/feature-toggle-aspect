@@ -15,7 +15,12 @@ public class Feature {
         this.disabled = disabled;
     }
 
-    void toggle(boolean disabled) {
+    /**
+     * Toggles feature
+     *
+     * @param disabled - disable
+     */
+    protected void toggle(boolean disabled) {
         this.disabled = disabled;
     }
 

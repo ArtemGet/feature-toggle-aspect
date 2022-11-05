@@ -16,10 +16,16 @@ public class FeatureManager implements FeatureReindex, FeatureContainer {
     //TODO: concurrentMap
     private Map<String, Feature> featureMap;
 
+    /**
+     * NPE in case of features null input or is empty or any
+     * feature is null or featureName is null
+     *
+     * @param features - features
+     */
     public FeatureManager(Set<Feature> features) {
         Objects.requireNonNull(features);
         if (features.isEmpty()) {
-            throw new NullPointerException();
+            throw new NullPointerException("Empty feature set");
         }
         this.featureMap = toMap(features);
     }
@@ -53,11 +59,17 @@ public class FeatureManager implements FeatureReindex, FeatureContainer {
     @Override
     synchronized public void toggle(Feature feature) {
         Objects.requireNonNull(feature);
+        Objects.requireNonNull(feature.getFeatureName());
         this.toggleFeature(feature);
     }
 
     private Map<String, Feature> toMap(Set<Feature> features) {
         return features.stream()
+                .peek(feature -> {
+                    if (feature == null || feature.getFeatureName() == null) {
+                        throw new NullPointerException("Feature is null or featureName is null");
+                    }
+                })
                 .collect(Collectors.toMap(Feature::getFeatureName, feature -> feature));
     }
 

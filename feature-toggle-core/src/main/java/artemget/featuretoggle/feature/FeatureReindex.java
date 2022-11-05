@@ -5,18 +5,19 @@ import java.util.Set;
 public interface FeatureReindex {
 
     /**
-     * Reindex all features, NPE in case of features null
+     * Reindex all features, NPE in case of features null input or is empty or any
+     * feature is null or featureName is null
      *
      * @param features - features
      */
     void reindex(Set<Feature> features) throws NullPointerException;
 
     /**
-     * Toggle feature, NPE in case of features null
+     * Toggle feature, NPE in case of feature is null or featureName is null
      *
-     * @param features - features
+     * @param feature - features
      */
-    void toggle(Feature features) throws NullPointerException;
+    void toggle(Feature feature) throws NullPointerException;
 
     /**
      * Toggle features, NPE in case of features null

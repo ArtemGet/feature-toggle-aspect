@@ -2,6 +2,11 @@ package artemget.featuretoggle.aspect;
 
 import artemget.featuretoggle.exception.FeatureDisabledException;
 
+/**
+ * Feature toggle contract
+ *
+ * @param <J> - generic join point
+ */
 public interface ToggleProcessor<J> {
     /**
      * Annotation processing

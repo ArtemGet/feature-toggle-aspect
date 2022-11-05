@@ -1,5 +1,8 @@
 package artemget.featuretoggle.exception;
 
+/**
+ * Should be thrown in case of feature disabled
+ */
 public class FeatureDisabledException extends Exception {
     public FeatureDisabledException() {
     }

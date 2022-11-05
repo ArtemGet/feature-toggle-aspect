@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Set;
 
-//TODO: concurrent tests
+//TODO: test concurrent reindex
 class FeatureManagerTest {
 
     @Test
@@ -58,7 +58,9 @@ class FeatureManagerTest {
         Feature actual = featureManager.getFeature("second");
 
         Assertions.assertEquals(expected, actual);
-        Assertions.assertNull(featureManager.getFeature("first"));
+        Assertions.assertThrows(FeatureNotFoundEx.class,
+                () -> featureManager.getFeature("first"),
+                "No feature found for name first");
     }
 
     //Input tests
